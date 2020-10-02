@@ -1,0 +1,132 @@
+" October 1, 2020:
+" This initvimrc.txt file is used for initializing either Vim or Neovim (Nvim).
+" Copy to .vimrc for Vim or copy to init.vim for Neovim.
+"
+" Sections below that are used only for Vim will start with label VIM ONLY:
+" Sections below that are used only for Neovim will start with label NEOVIM ONLY:
+" 
+" ---------------------------------------------------------------------------------
+" Vim initialize file is located in this folder:
+"    ~/.vimrc
+" 
+" Neovim initialize file is located in this folder:
+"    ~/.config/nvim/init.vim
+" 
+" ---------------------------------------------------------------------------------
+" Vim autoload and bundle directory locations:
+"   ~/.vim/autoload
+"   ~/.vim/bundle
+"  
+" Neovim autoload and bundle directory locations:
+"   ~/.local/share/nvim/site/autoload
+"   ~/.config/nvim/bundle
+" 
+" ---------------------------------------------------------------------------------
+"
+" Pathogen install:
+" See https://linuxconfig.org/manage-vim-plugins-with-pathogen
+"   cd into the autoload location.
+"   git clone https://github.com/tpope/vim-pathogen.git
+" For some reason Vim and Nvim cannot find pathogen.vim,
+" so after cloning, copy pathogen.vim to respective autoload location.
+" 
+" Pathogen use:
+" Put plugin .vim files into the bundle directory, and they will get loaded when
+" Vim or Nvim starts.
+" Maybe make a bundle-not-used directory parallel to bundle to store plugins that are not used.
+"
+" vim-airline:
+" cd into the bundle location
+" git clone https://github.com/vim-airline/vim-airline
+"
+" nerdtree install:
+" See https://github.com/preservim/nerdtree
+" cd into the bundle location
+" git clone https://github.com/preservim/nerdtree.git
+"
+set nocompatible              " be iMproved, required
+filetype plugin indent on
+syntax on
+execute pathogen#infect()
+
+" fzf - command line fuzzy finder
+" See   https://github.com/junegunn/fzf
+"   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+" Run the following command, and accept all the defaults.
+"   ~/.fzf/install
+" If fuzzy finder was installed using git, add the following to .vimrc or init.vim
+set rtp+=~/.fzf
+" twd - The following 2 lines would allow holding down the comma key then the 's' key to go into fzf.
+"let mapleader = ","
+"nnoremap <leader>s :<C-u>FZF<CR>
+" twd - But let's just use the Ctrl key and 'p' to mimic the Vim ctrlp.vim thing.
+nnoremap <C-p> :<C-u>FZF<CR>
+
+"filetype off                  " required
+
+" ---------------------------------------------------------------------------------
+" VIM ONLY:
+"
+" Set the runtime path to include Vundle and initialize
+"set rtp+=~/.vim/bundle/Vundle.vim
+"call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+"Plugin 'VundleVim/Vundle.vim'
+"Plugin 'lyuts/vim-rtags'
+
+"" See https://github.com/mphe/grayout.vim
+"" In directory .vim, make directory grayout and copy directory plugin and its contents there.
+"Plugin 'grayout'
+
+" All of your Plugins must be added before the following line
+"call vundle#end()            " required
+"filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+
+"filetype plugin off
+" ---------------------------------------------------------------------------------
+
+set number
+set ic
+
+set autoindent
+set smartindent
+set cindent
+set hlsearch
+" The following is the default search colors.
+"hi Search term=reverse ctermfg=0 ctermbg=Yellow guifg=Black guibg=Yellow
+" The following is a good search color that let's me see the cursor even
+" in the highlighted text.
+hi Search term=reverse ctermfg=Black ctermbg=Red guifg=Black guibg=Yellow
+
+" ---------------------------------------------------------------------------------
+" NEOVIM ONLY:
+"
+nnoremap <silent> <C-n> :Explore<CR>
+let g:netrw_banner = 0
+"let g:netrw_browse_split = 4
+"let g:netrw_winsize = 20
+"
+" Enable blinking together with different cursor shapes for insert/command
+" mode, and cursor highlighting:0
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,
+ \a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,
+ \sm:block-blinkwait175-blinkoff150-blinkon175 
+" ---------------------------------------------------------------------------------
+
+
+" ---------------------------------------------------------------------------------
+" VIM ONLY:
+"
+" Use this only if the NERDTree plugin has been installed.
+"nnoremap <silent> <C-n> :NERDTreeToggle<CR>
+" ---------------------------------------------------------------------------------
+
+" From https://howchoo.com/g/m2u0nthkyti/vim-convert-tabs-to-spaces
+" Use expand tab to convert new tabs to spaces. 
+set tabstop=3 shiftwidth=3 expandtab
+set laststatus=2
