@@ -1,5 +1,8 @@
-" October 1, 2020:
+" October 7, 2020:
 " This initvimrc.txt file is used for initializing either Vim or Neovim (Nvim).
+" Pull from github by doing this:
+"   git clone https://github.com/terry1900/vim.git
+"
 " Copy to .vimrc for Vim or copy to init.vim for Neovim.
 "
 " Sections below that are used only for Vim will start with label VIM ONLY:
@@ -36,13 +39,19 @@
 " Maybe make a bundle-not-used directory parallel to bundle to store plugins that are not used.
 "
 " vim-airline:
-" cd into the bundle location
-" git clone https://github.com/vim-airline/vim-airline
+" This is a good one!
+" Vim needs Pathogen installed in the autoload location for this to work (see Pathogen install above).
+" Neovim works without installing Pathogen.
+" When is correctly loaded, there will be a nice statusline at the bottom of each
+" vim window. That line consists of several sections, each one displaying some piece of
+" useful information. Just do the following, and it will work.
+"   cd into the bundle location
+"   git clone https://github.com/vim-airline/vim-airline
 "
 " nerdtree install:
 " See https://github.com/preservim/nerdtree
-" cd into the bundle location
-" git clone https://github.com/preservim/nerdtree.git
+"   cd into the bundle location
+"   git clone https://github.com/preservim/nerdtree.git
 "
 set nocompatible              " be iMproved, required
 filetype plugin indent on
